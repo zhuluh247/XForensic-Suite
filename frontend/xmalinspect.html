@@ -118,7 +118,7 @@
             formData.append('file', selectedFile);
 
             try {
-                const res = await fetch('http://localhost:8000/api/malware/inspect', {
+                const res = await fetch('https://xforensic-suite-backend.onrender.com/api/malware/inspect', {
                     method: 'POST',
                     body: formData
                 });

@@ -118,7 +118,7 @@
             formData.append('file', selectedFile);
 
             try {
-                const res = await fetch('http://localhost:8000/api/voice/verify', {
+                const res = await fetch('https://xforensic-suite-backend.onrender.com/api/voice/verify', {
                     method: 'POST',
                     body: formData
                 });

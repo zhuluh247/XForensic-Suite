@@ -167,7 +167,7 @@
                     formData.append('secret_text', secretText);
                     if (pwd) formData.append('password', pwd);
 
-                    const res = await fetch('http://localhost:8000/api/stego/hide', { method: 'POST', body: formData });
+                    const res = await fetch('https://xforensic-suite-backend.onrender.com/api/stego/hide', { method: 'POST', body: formData });
                     const data = await res.json();
                     if (!res.ok) throw new Error(data.detail || 'Embedding failed');
 
