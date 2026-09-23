@@ -12,7 +12,7 @@ import requests
 
 router = APIRouter(prefix="/api/malware", tags=["XMalInspect"])
 
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
 IOC_PATTERNS = {
     "ipv4": r"\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b",

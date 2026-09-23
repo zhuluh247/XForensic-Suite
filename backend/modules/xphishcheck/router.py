@@ -19,7 +19,7 @@ router = APIRouter(prefix="/api/phish", tags=["XPhishCheck"])
 class URLScanRequest(BaseModel):
     url: str
 
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
 SHORTENERS = ["bit.ly", "tinyurl.com", "t.co", "ow.ly", "goo.gl", "buff.ly", "adf.ly", "is.gd"]
 
