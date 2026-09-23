@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPhishCheck | XForensic Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#090d16',
+                        cardbg: '#111827',
+                        accent: '#06b6d4',
+                        danger: '#ef4444',
+                        success: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen flex flex-col">
+
+    <header class="border-b border-gray-800 bg-cardbg/50 backdrop-blur sticky top-0 z-50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="index.html" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-mono text-gray-300 transition flex items-center space-x-2 border border-gray-700">
+                <span>←</span>
+                <span>Command Center Hub</span>
+            </a>
+            <div class="h-4 w-[1px] bg-gray-800"></div>
+            <div class="flex items-center space-x-2">
+                <span class="text-lg">🎣</span>
+                <h1 class="text-lg font-bold text-white">XPhishCheck: URL & Domain Intelligence Scraper</h1>
+            </div>
+        </div>
+        <div class="text-xs font-mono text-gray-400">
+            <span class="px-3 py-1 rounded bg-accent/10 text-accent border border-accent/30">ENDPOINT: /api/phish/scan</span>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-5xl w-full mx-auto p-8 space-y-6">
+        <div class="bg-cardbg border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <div>
+                <h2 class="text-base font-bold text-white">Target URL Scraper</h2>
+                <p class="text-xs text-gray-400 mt-0.5">Evaluate suspicious domains, RDAP registration records, brand spoofing, and cloud viewport captures.</p>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Target URL or Domain</label>
+                <input type="text" id="url-input" placeholder="https://suspicious-phish-domain.com" class="w-full bg-gray-900 border border-gray-700 focus:border-accent rounded-xl px-4 py-3 text-sm text-white outline-none transition">
+            </div>
+
+            <button onclick="executeAnalysis()" id="exec-btn" class="w-full py-3 bg-accent hover:bg-cyan-400 text-darkbg font-bold rounded-xl transition shadow-lg shadow-accent/10">
+                Execute Phishing Intelligence Scan
+            </button>
+        </div>
+
+        <div id="results-panel" class="bg-cardbg border border-gray-800 rounded-2xl p-6 shadow-xl hidden space-y-6">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                <h3 class="text-base font-bold text-white">Threat Investigation Dossier</h3>
+                <span id="badge-verdict" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-500/10 text-red-400 border border-red-500/30">CONFIRMED PHISHING</span>
+            </div>
+
+            <div id="metric-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+
+            <div id="visual-preview-container" class="hidden space-y-2">
+                <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Cloud Viewport Capture</h4>
+                <div class="rounded-xl overflow-hidden border border-gray-800 bg-gray-900">
+                    <img id="phish-screenshot" src="" alt="Target Viewport Preview" class="w-full object-cover">
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">SOC Analyst Briefing</h4>
+                <div id="dossier-content" class="space-y-2 text-sm text-gray-300 bg-gray-900/60 p-4 rounded-xl border border-gray-800/80 leading-relaxed"></div>
+            </div>
+
+            <div>
+                <details class="group bg-gray-900/40 rounded-xl border border-gray-800">
+                    <summary class="px-4 py-3 text-xs font-mono text-gray-400 cursor-pointer hover:text-white flex justify-between items-center">
+                        <span>Inspect Raw Telemetry Payload</span>
+                        <span class="group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="p-4 border-t border-gray-800 overflow-x-auto max-h-80">
+                        <pre id="raw-json" class="text-xs text-accent"></pre>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function executeAnalysis() {
+            const urlVal = document.getElementById('url-input').value.trim();
+            if (!urlVal) {
+                alert('Please enter a valid URL to scan.');
+                return;
+            }
+
+            const btn = document.getElementById('exec-btn');
+            btn.innerText = 'Scraping Threat Intelligence...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('http://localhost:8000/api/phish/scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: urlVal })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || 'Scan failed');
+
+                renderResults(data);
+            } catch (err) {
+                alert(`Forensic Execution Error: ${err.message}`);
+            } finally {
+                btn.innerText = 'Execute Phishing Intelligence Scan';
+                btn.disabled = false;
+            }
+        }
+
+        function renderResults(data) {
+            document.getElementById('results-panel').classList.remove('hidden');
+            document.getElementById('visual-preview-container').classList.add('hidden');
+            document.getElementById('raw-json').innerText = JSON.stringify(data, null, 2);
+
+            const badge = document.getElementById('badge-verdict');
+            badge.innerText = data.verdict;
+            badge.className = data.verdict.includes('PHISHING') || data.verdict.includes('HIGH')
+                ? "px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-500/10 text-red-400 border border-red-500/30"
+                : "px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30";
+
+            const grid = document.getElementById('metric-grid');
+            grid.innerHTML = `
+                <div class="bg-gray-900/60 p-4 rounded-xl border border-gray-800"><span class="text-xs text-gray-400 block">Risk Score</span><strong class="text-red-400 text-sm">${data.risk_score_percentage}</strong></div>
+                <div class="bg-gray-900/60 p-4 rounded-xl border border-gray-800"><span class="text-xs text-gray-400 block">Resolved Domain</span><strong class="text-white text-sm">${data.resolved_domain}</strong></div>
+                <div class="bg-gray-900/60 p-4 rounded-xl border border-gray-800"><span class="text-xs text-gray-400 block">Domain Age</span><strong class="text-accent text-sm">${data.domain_age_days}</strong></div>
+            `;
+
+            if (data.desktop_screenshot_url) {
+                document.getElementById('visual-preview-container').classList.remove('hidden');
+                document.getElementById('phish-screenshot').src = `http://localhost:8000${data.desktop_screenshot_url}`;
+            }
+
+            const container = document.getElementById('dossier-content');
+            container.innerHTML = '';
+            (data.detailed_verdict_reasons || []).forEach(p => {
+                const para = document.createElement('p');
+                para.innerText = p;
+                container.appendChild(para);
+            });
+        }
+    </script>
+</body>
+</html>
