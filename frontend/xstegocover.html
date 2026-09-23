@@ -171,7 +171,7 @@
                     const data = await res.json();
                     if (!res.ok) throw new Error(data.detail || 'Embedding failed');
 
-                    const downloadUrl = `http://localhost:8000${data.download_url}`;
+                    const downloadUrl = `https://xforensic-suite-backend.onrender.com${data.download_url}`;
                     const a = document.createElement('a');
                     a.href = downloadUrl;
                     a.download = `stego_${selectedFile.name}`;
@@ -183,7 +183,7 @@
                     const pwd = document.getElementById('reveal-pwd').value;
                     if (pwd) formData.append('password', pwd);
 
-                    const res = await fetch('http://localhost:8000/api/stego/reveal', { method: 'POST', body: formData });
+                    const res = await fetch('https://xforensic-suite-backend.onrender.com/api/stego/reveal', { method: 'POST', body: formData });
                     const data = await res.json();
                     if (!res.ok) throw new Error(data.detail || 'Extraction failed');
 

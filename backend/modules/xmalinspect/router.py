@@ -203,7 +203,7 @@ async def inspect_file(file: UploadFile = File(...)):
         try:
             headers = {
                 "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "HTTP-Referer": "http://localhost:8000",
+                "HTTP-Referer": "https://xforensic-suite-backend.onrender.com",
                 "X-Title": "XForensic Suite",
                 "Content-Type": "application/json"
             }

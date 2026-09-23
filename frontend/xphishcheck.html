@@ -147,7 +147,7 @@
 
             if (data.desktop_screenshot_url) {
                 document.getElementById('visual-preview-container').classList.remove('hidden');
-                document.getElementById('phish-screenshot').src = `http://localhost:8000${data.desktop_screenshot_url}`;
+                document.getElementById('phish-screenshot').src = `https://xforensic-suite-backend.onrender.com${data.desktop_screenshot_url}`;
             }
 
             const container = document.getElementById('dossier-content');
