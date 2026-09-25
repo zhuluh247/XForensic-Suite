@@ -11,8 +11,8 @@
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#090d16',
-                        cardbg: '#111827',
+                        darkbg: '#000000',
+                        cardbg: '#000000',
                         accent: '#06b6d4',
                         danger: '#ef4444',
                         success: '#10b981'
@@ -21,10 +21,11 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         code, pre { font-family: 'JetBrains Mono', monospace; }
+        h1, h2, h3, .font-mono { font-family: 'IBM Plex Mono', monospace; }
     </style>
 </head>
 <body class="bg-darkbg text-gray-100 min-h-screen flex flex-col">
@@ -45,7 +46,7 @@
     <main class="flex-1 max-w-7xl w-full mx-auto p-8 space-y-8">
         
         <!-- Welcome Banner -->
-        <div class="bg-gradient-to-r from-cardbg to-gray-900 border border-gray-800 rounded-2xl p-8 shadow-xl flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="bg-gradient-to-r from-cardbg to-gray-900 border border-accent/40 rounded-2xl p-8 shadow-xl flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="space-y-2">
                 <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-accent/10 text-accent border border-accent/30">ENTERPRISE SECURITY SUITE</span>
                 <h2 class="text-3xl font-extrabold text-white tracking-tight">Cyber-Forensics & OSINT Command Center</h2>
@@ -62,14 +63,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- XMediaTrace -->
-            <a href="xmediatrace.html" class="bg-cardbg border border-gray-800 hover:border-accent/60 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
+            <a href="xmediatrace.html" class="bg-cardbg border border-accent/40 hover:border-accent hover:-translate-y-2 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
                 <div class="space-y-4">
                     <div class="flex justify-between items-start">
-                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800">🛰️</span>
+                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-32v-80q117 0 198.5-81.5T840-392h80q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T560-32Zm0-160v-80q50 0 85-35t35-85h80q0 83-58.5 141.5T560-192ZM222-57q-15 0-30-6t-27-17L23-222q-11-12-17-27t-6-30q0-16 6-30.5T23-335l127-127q23-23 57-23.5t57 22.5l50 50 28-28-50-50q-23-23-23-56t23-56l57-57q23-23 56.5-23t56.5 23l50 50 28-28-50-50q-23-23-23-56.5t23-56.5l127-127q12-12 27-18t30-6q15 0 29.5 6t26.5 18l142 142q12 11 17.5 25.5T895-730q0 15-5.5 30T872-673L745-546q-23 23-56.5 23T632-546l-50-50-28 28 50 50q23 23 22.5 56.5T603-405l-56 56q-23 23-56.5 23T434-349l-50-50-28 28 50 50q23 23 22.5 57T405-207L278-80q-11 11-25.5 17T222-57Zm0-79 42-42-142-142-42 42 142 142Zm85-85 42-42-142-142-42 42 142 142Zm184-184 56-56-142-142-56 56 142 142Zm198-198 42-42-142-142-42 42 142 142Zm85-85 42-42-142-142-42 42 142 142ZM448-504Z"/></svg></span>
                         <span class="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">OSINT</span>
                     </div>
                     <h3 class="text-lg font-bold text-white group-hover:text-accent transition">XMediaTrace</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Inspect video and image containers, extract temporal keyframes, track platform pipelines, and perform geospatial coordinate triangulation.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Inspect video and image containers, extract temporal keyframes, track platform pipelines, and perform geospatial coordinate triangulation.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-gray-800/80 flex justify-between items-center text-xs font-mono text-gray-400 group-hover:text-white">
                     <span>Launch Workspace</span>
@@ -78,14 +79,14 @@
             </a>
 
             <!-- XVoiceVerify -->
-            <a href="xvoiceverify.html" class="bg-cardbg border border-gray-800 hover:border-accent/60 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
+            <a href="xvoiceverify.html" class="bg-cardbg border border-accent/40 hover:border-accent hover:-translate-y-2 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
                 <div class="space-y-4">
                     <div class="flex justify-between items-start">
-                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800">🎙️</span>
+                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M80-80v-80q46 0 91-6t88-22q-46-23-72.5-66.5T160-349v-91h160v-120h135L324-822l72-36 131 262q20 40-3 78t-68 38h-56v40q0 33-23.5 56.5T320-360h-80v11q0 35 21.5 61.5T316-252l12 3q40 10 45 50t-31 60q-60 33-126.5 46T80-80Zm572-114-57-56q21-21 33-48.5t12-59.5q0-32-12-59.5T595-466l57-57q32 32 50 74.5t18 90.5q0 48-18 90t-50 74ZM765-80l-57-57q43-43 67.5-99.5T800-358q0-66-24.5-122T708-579l57-57q54 54 84.5 125T880-358q0 81-30.5 152.5T765-80Z"/></svg></span>
                         <span class="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">AUDIO</span>
                     </div>
                     <h3 class="text-lg font-bold text-white group-hover:text-accent transition">XVoiceVerify</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Analyze audio streams, spectral centroids, and container metadata to detect neural vocoder synthesis and voice deepfakes.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Analyze audio streams, spectral centroids, and container metadata to detect neural vocoder synthesis and voice deepfakes.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-gray-800/80 flex justify-between items-center text-xs font-mono text-gray-400 group-hover:text-white">
                     <span>Launch Workspace</span>
@@ -94,14 +95,14 @@
             </a>
 
             <!-- XStegoCover -->
-            <a href="xstegocover.html" class="bg-cardbg border border-gray-800 hover:border-accent/60 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
+            <a href="xstegocover.html" class="bg-cardbg border border-accent/40 hover:border-accent hover:-translate-y-2 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
                 <div class="space-y-4">
                     <div class="flex justify-between items-start">
-                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800">🔐</span>
+                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-200h80v-120h120v-80H520v-120h-80v120H320v80h120v120ZM240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm120-480h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"/></svg></span>
                         <span class="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">CRYPTO</span>
                     </div>
                     <h3 class="text-lg font-bold text-white group-hover:text-accent transition">XStegoCover</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Hide encrypted secret intelligence messages inside carrier images via LSB steganography, or extract and reveal hidden payloads.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Hide encrypted secret intelligence messages inside carrier images via LSB steganography, or extract and reveal hidden payloads.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-gray-800/80 flex justify-between items-center text-xs font-mono text-gray-400 group-hover:text-white">
                     <span>Launch Workspace</span>
@@ -110,14 +111,14 @@
             </a>
 
             <!-- XMalInspect -->
-            <a href="xmalinspect.html" class="bg-cardbg border border-gray-800 hover:border-accent/60 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
+            <a href="xmalinspect.html" class="bg-cardbg border border-accent/40 hover:border-accent hover:-translate-y-2 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
                 <div class="space-y-4">
                     <div class="flex justify-between items-start">
-                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800">🦠</span>
+                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M600-80q-17 0-28.5-11.5T560-120v-43q-23-4-43.5-11.5T478-195l-40 40q-12 11-28.5 11.5T381-155q-12-12-12-28.5t12-28.5l41-41q-3-5-6-10.5t-6-10.5l-27-53-49 49q-12 11-28 11.5T278-278q-12-12-12-28t12-28l49-50-53-26q-5-2-9-4.5t-9-5.5l-36 36q-12 11-28.5 11.5T163-384q-12-12-12-28t12-28l35-35q-14-19-22.5-40.5T163-560h-43q-17 0-28.5-11.5T80-600q0-17 11.5-28.5T120-640h45q5-19 12-36t18-33l-35-35q-12-12-12-28t12-28q12-12 28-12t28 12l35 35q16-11 33-18t36-12v-45q0-17 11.5-28.5T360-880q17 0 28.5 11.5T400-840v43q24 4 45.5 13t40.5 23l35-35q12-12 28.5-12t28.5 12q12 12 12 28t-12 28l-37 37q2 4 4.5 8t4.5 9l25 50 46-46q12-12 28.5-12t28.5 12q12 12 12 28.5T678-625l-48 47 56 28q6 3 12.5 6.5T710-536l40-40q12-12 28-12t28 12q12 12 12 28.5T806-519l-40 39q12 18 19.5 38t11.5 42h43q17 0 28.5 11.5T880-360q0 17-11.5 28.5T840-320h-45q-5 19-12 35.5T765-252l34 34q12 12 12 28.5T799-161q-12 11-28.5 11.5T742-161l-33-34q-16 11-33 18t-36 12v45q0 17-11.5 28.5T600-80Zm-6-160q58 0 95.5-44T718-386q-5-30-22.5-54T650-478l-66-34q-23-12-41.5-30.5T512-584l-34-66q-16-32-46-51t-66-19q-58 0-95.5 44T242-574q5 30 22.5 54t45.5 38l66 34q23 12 41.5 30.5T448-376l34 66q16 32 46 51t66 19ZM380-540q25 0 42.5-17.5T440-600q0-25-17.5-42.5T380-660q-25 0-42.5 17.5T320-600q0 25 17.5 42.5T380-540Zm235.5 235.5Q630-319 630-340t-14.5-35.5Q601-390 580-390t-35.5 14.5Q530-361 530-340t14.5 35.5Q559-290 580-290t35.5-14.5ZM480-480Z"/></svg></span>
                         <span class="text-xs font-mono text-danger bg-danger/10 px-2.5 py-1 rounded-full border border-danger/20">THREAT</span>
                     </div>
                     <h3 class="text-lg font-bold text-white group-hover:text-accent transition">XMalInspect</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Inspect PE headers, APK manifests, cryptographic hashes, Shannon entropy packing anomalies, and suspicious binary APIs.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Inspect PE headers, APK manifests, cryptographic hashes, Shannon entropy packing anomalies, and suspicious binary APIs.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-gray-800/80 flex justify-between items-center text-xs font-mono text-gray-400 group-hover:text-white">
                     <span>Launch Workspace</span>
@@ -126,14 +127,14 @@
             </a>
 
             <!-- XPhishCheck -->
-            <a href="xphishcheck.html" class="bg-cardbg border border-gray-800 hover:border-accent/60 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
+            <a href="xphishcheck.html" class="bg-cardbg border border-accent/40 hover:border-accent hover:-translate-y-2 rounded-2xl p-6 transition group flex flex-col justify-between shadow-xl">
                 <div class="space-y-4">
                     <div class="flex justify-between items-start">
-                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800">🎣</span>
+                        <span class="text-3xl p-3 bg-gray-900 rounded-xl border border-gray-800"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M270-190q-70-70-70-170v-240l200 200-56 57-64-64v47q0 66 47 113t113 47q66 0 113-47t47-113v-127q-36-14-58-44.5T520-600q0-38 22-68.5t58-44.5v-167h80v167q36 14 58 44.5t22 68.5q0 38-22 69t-58 44v127q0 100-70 170t-170 70q-100 0-170-70Zm398.5-381.5Q680-583 680-600t-11.5-28.5Q657-640 640-640t-28.5 11.5Q600-617 600-600t11.5 28.5Q623-560 640-560t28.5-11.5ZM640-600Z"/></svg></span>
                         <span class="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">INTEL</span>
                     </div>
                     <h3 class="text-lg font-bold text-white group-hover:text-accent transition">XPhishCheck</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Evaluate suspicious URLs and domains, inspect RDAP registrar records, detect brand impersonation, and view cloud browser viewport screenshots.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Evaluate suspicious URLs and domains, inspect RDAP registrar records, detect brand impersonation, and view cloud browser viewport screenshots.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-gray-800/80 flex justify-between items-center text-xs font-mono text-gray-400 group-hover:text-white">
                     <span>Launch Workspace</span>
@@ -145,3 +146,4 @@
     </main>
 </body>
 </html>
+
