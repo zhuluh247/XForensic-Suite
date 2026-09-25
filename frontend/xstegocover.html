@@ -11,8 +11,8 @@
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#090d16',
-                        cardbg: '#111827',
+                        darkbg: '#000000',
+                        cardbg: '#000000',
                         accent: '#06b6d4',
                         danger: '#ef4444',
                         success: '#10b981'
@@ -25,6 +25,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         code, pre { font-family: 'JetBrains Mono', monospace; }
+        h1, h2, h3, .font-mono { font-family: 'IBM Plex Mono', monospace; }
     </style>
 </head>
 <body class="bg-darkbg text-gray-100 min-h-screen flex flex-col">
@@ -37,7 +38,7 @@
             </a>
             <div class="h-4 w-[1px] bg-gray-800"></div>
             <div class="flex items-center space-x-2">
-                <span class="text-lg">🔐</span>
+                <span class="text-lg"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-200h80v-120h120v-80H520v-120h-80v120H320v80h120v120ZM240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm120-480h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"/></svg></span>
                 <h1 class="text-lg font-bold text-white">XStegoCover: Cryptographic Steganography Engine</h1>
             </div>
         </div>
@@ -47,7 +48,7 @@
     </header>
 
     <main class="flex-1 max-w-5xl w-full mx-auto p-8 space-y-6">
-        <div class="bg-cardbg border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <div class="bg-cardbg border border-accent/40 rounded-2xl p-6 shadow-xl space-y-4">
             <div class="flex space-x-2 bg-gray-900 p-1.5 rounded-xl border border-gray-800">
                 <button onclick="setMode('hide')" id="tab-hide" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-accent text-darkbg">Hide Payload (Embed)</button>
                 <button onclick="setMode('reveal')" id="tab-reveal" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-gray-400 hover:text-white">Reveal Payload (Extract)</button>
@@ -108,7 +109,7 @@
                     <div class="border-2 border-dashed border-gray-700 hover:border-accent rounded-xl p-6 text-center cursor-pointer transition bg-gray-900/50">
                         <input type="file" id="file-input" class="hidden" onchange="handleFileSelect(event)">
                         <div onclick="document.getElementById('file-input').click()" class="space-y-2">
-                            <div class="text-2xl">🖼️</div>
+                            <div class="text-2xl" style="display: flex; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h320v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm40-160h480L570-480 450-320l-90-120-120 160Zm480-280v-167l-64 63-56-56 160-160 160 160-56 56-64-63v167h-80Z"/></svg></div>
                             <p class="text-sm font-medium text-gray-300" id="file-label">Select carrier image (.png, .jpg)</p>
                         </div>
                     </div>
@@ -126,7 +127,7 @@
                     <div class="border-2 border-dashed border-gray-700 hover:border-accent rounded-xl p-8 text-center cursor-pointer transition bg-gray-900/50">
                         <input type="file" id="file-input" class="hidden" onchange="handleFileSelect(event)">
                         <div onclick="document.getElementById('file-input').click()" class="space-y-2">
-                            <div class="text-3xl">🔍</div>
+                            <div class="text-3xl" style="display: flex; justify-content: center"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg></div>
                             <p class="text-sm font-medium text-gray-300" id="file-label">Upload stego carrier image to extract message</p>
                         </div>
                     </div>
