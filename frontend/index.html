@@ -168,6 +168,33 @@
     <script>
         function runTypewriter() {
             const elements = Array.from(document.querySelectorAll('.typewriter'));
+
+            // Determine how this page load happened
+            let navType = 'navigate';
+            const navEntries = performance.getEntriesByType('navigation');
+            if (navEntries.length > 0) {
+                navType = navEntries[0].type;
+            } else if (performance.navigation) {
+                const legacyMap = { 0: 'navigate', 1: 'reload', 2: 'back_forward' };
+                navType = legacyMap[performance.navigation.type] || 'navigate';
+            }
+
+            // Did the visitor arrive by clicking a link from another page on this same site?
+            let cameFromSameSite = false;
+            try {
+                cameFromSameSite = document.referrer && new URL(document.referrer).origin === window.location.origin;
+            } catch (e) {
+                cameFromSameSite = false;
+            }
+
+            const shouldAnimate = navType === 'reload' || (navType === 'navigate' && !cameFromSameSite);
+
+            if (!shouldAnimate) {
+                // Skip the animation, just show the final text instantly
+                elements.forEach(el => { el.textContent = el.dataset.text; });
+                return;
+            }
+
             elements.forEach(el => { el.textContent = ''; });
 
             function typeNext(index) {
@@ -195,6 +222,13 @@
         }
 
         document.addEventListener('DOMContentLoaded', runTypewriter);
+
+        // Release the fade-up animation once it finishes, so :hover transforms work again
+        document.querySelectorAll('.fade-up').forEach(el => {
+            el.addEventListener('animationend', () => {
+                el.classList.remove('fade-up');
+            }, { once: true });
+        });
     </script>
 </body>
 </html>

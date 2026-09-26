@@ -26,6 +26,14 @@
         body { font-family: 'Inter', sans-serif; }
         code, pre { font-family: 'JetBrains Mono', monospace; }
         h1, h2, h3, .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-darkbg text-gray-100 min-h-screen flex flex-col">
